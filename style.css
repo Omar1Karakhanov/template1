@@ -1,0 +1,378 @@
+/* style.css */
+
+/* Define color variables and global styles */
+:root {
+    --dark-green: hwb(147 4% 78%);
+    --white: #FFFFFF;
+    --black: #121212;
+    --grey: #f4f4f4;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    color: var(--black);
+    background-color: var(--white);
+    box-sizing: border-box;
+}
+
+/* --- Reusable Components --- */
+
+/* Navigation Bar Styling */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--dark-green);
+    padding: 1rem 2rem;
+    color: var(--white);
+}
+
+.navbar .logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.navbar a {
+    color: var(--white);
+    text-decoration: none;
+    padding: 0 1rem;
+    font-weight: bold;
+}
+.navbar a.active {
+    text-decoration: underline;
+}
+
+/* Button Styling */
+.btn {
+    background-color: var(--dark-green);
+    color: var(--white);
+    padding: 12px 24px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #0F522D; /* A slightly lighter green for hover */
+}
+
+/* --- Home Page Styles --- */
+.home-page {
+    background-image: 
+        linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+        url('https://images.unsplash.com/photo-1552566626-52f8b828add9?ixlib=rb-4.0.3&q=80&w=2070');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; 
+    color: var(--white);
+}
+
+.home-page .navbar {
+    background-color: rgba(10, 54, 30, 0.9);
+}
+
+/* --- Menu Page Styles --- */
+.menu-filters {
+    text-align: center;
+    margin: 2rem 0;
+}
+.menu-filters button {
+    margin: 0 0.5rem;
+    padding: 10px 20px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    font-size: 1rem;
+    border: 2px solid var(--dark-green);
+    color: var(--dark-green);
+    background-color: var(--white);
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.menu-filters button:hover {
+    background-color: var(--dark-green);
+    color: var(--white);
+}
+
+.menu-filters button.active-filter {
+    background-color: var(--dark-green);
+    color: var(--white);
+}
+
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+    padding: 0 2rem 2rem 2rem;
+}
+
+.menu-card {
+    background-color: var(--grey);
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 0; 
+    text-align: left;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+}
+
+.card-img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+}
+
+.card-content {
+    padding: 1.5rem;
+}
+
+.menu-card h3 {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+    color: var(--dark-green);
+    font-size: 1.25rem;
+}
+
+.menu-card .price {
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 1rem;
+}
+
+.menu-card .description {
+    font-size: 0.9rem;
+    line-height: 1.4;
+    color: #555;
+}
+
+
+/* --- Contact Form Styles --- */
+.contact-form {
+    max-width: 600px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: var(--grey);
+    border-radius: 8px;
+}
+.form-group {
+    margin-bottom: 1.5rem;
+}
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+}
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+
+
+/* ==============================================
+   Footer: "Powered By" Logo Centered Style
+   ============================================== */
+
+.site-footer {
+    /* 
+     * THE FIX: Using the exact bright green from your image. 
+     */
+    background-color: #28590d;
+    
+    padding: 1.5rem 1rem;
+    margin-top: 5rem;
+
+    /* These three lines perfectly center the content block */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer-credit {
+    /* This groups your text and logo together */
+    display: inline-flex;
+    align-items: center; /* Vertically aligns text and logo */
+    gap: 0.75rem; /* The space between the text and the logo */
+    text-decoration: none; /* Removes the underline from the link */
+    transition: transform 0.3s ease;
+}
+
+.footer-credit:hover {
+    /* A nice, subtle grow effect on hover */
+    transform: scale(1.03);
+}
+
+.powered-by-text {
+    /* 
+     * THE FIX: Setting the font exactly as requested. 
+     */
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: bold;
+    font-size: 1.6rem; /* Adjust size if needed */
+    color: #000000; /* Black text */
+    margin: 0; /* Important: removes default spacing */
+}
+
+.agency-logo {
+    height: 45px; /* Adjust size to match your preference */
+    display: block;
+
+    /* 
+     * IMPORTANT: We have REMOVED the 'filter' property. 
+     * Your logo is already black, so we don't need to change its color.
+     */
+}
+
+
+
+/* ==============================================
+   The "Perfect" Responsive Burger Menu Styles
+   ============================================== */
+
+/* --- 1. Basic Navbar Styling --- */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    /* Add a background if you don't have one */
+    background-color: #096029; 
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #0A361E; /* Your theme's dark green */
+}
+
+/* --- 2. Desktop Links --- */
+.nav-links a {
+    margin: 0 1rem;
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    position: relative;
+    padding-bottom: 0.25rem;
+    transition: color 0.3s;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #D4AF37; /* The "Golden" color */
+    transition: width 0.3s ease-out;
+}
+
+.nav-links a:hover, .nav-links a.active {
+    color: #0A361E;
+}
+
+.nav-links a:hover::after, .nav-links a.active::after {
+    width: 100%;
+}
+
+
+/* --- 3. The Burger Menu Button --- */
+.burger-menu {
+    display: none; /* Hidden on desktop */
+    background: none;
+    border: none;
+    font-size: 1.8rem;
+    color: #0A361E;
+    cursor: pointer;
+}
+
+/* --- 4. The Mobile Slide-In Panel --- */
+.mobile-nav {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 80%; /* Takes up 80% of the screen width */
+    max-width: 350px;
+    height: 100%;
+    background-color: #065f2e; /* Dark green for a premium feel */
+    z-index: 1000;
+    box-shadow: -5px 0 15px rgba(0,0,0,0.25);
+
+    /* Hide it off-screen by default */
+    transform: translateX(100%);
+    transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    padding-top: 5rem;
+    gap: 1.5rem;
+}
+
+.mobile-nav a {
+    color: rgb(24, 87, 8);
+    text-decoration: none;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: left;
+    padding: 0.5rem 0;
+    opacity: 0; /* Links start invisible for a stagger effect */
+    transform: translateX(20px);
+    transition: opacity 0.4s ease 0.2s, transform 0.4s ease 0.2s;
+}
+
+.close-btn {
+    position: absolute;
+    top: 1.5rem;
+    right: 2rem;
+    background: none;
+    border: none;
+    color: rgb(255, 255, 255);
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+/* --- 5. The Active / "Open" State --- */
+body.mobile-nav-active .mobile-nav {
+    transform: translateX(0); /* The slide-in animation */
+}
+
+/* This is the cool link animation! */
+body.mobile-nav-active .mobile-nav a {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Add staggered delay for each link */
+body.mobile-nav-active .mobile-nav a:nth-child(2) { transition-delay: 0.25s; }
+body.mobile-nav-active .mobile-nav a:nth-child(3) { transition-delay: 0.3s; }
+body.mobile-nav-active .mobile-nav a:nth-child(4) { transition-delay: 0.35s; }
+
+
+/* Lock the page from scrolling when the menu is open */
+body.mobile-nav-active {
+    overflow: hidden;
+}
+
+/* --- 6. The Responsive Breakpoint --- */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none; /* Hide desktop links on mobile */
+    }
+    .burger-menu {
+        display: block; /* Show the burger icon on mobile */
+    }
+}
