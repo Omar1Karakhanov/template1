@@ -1,393 +1,411 @@
-/* === THE GOLDEN FORK - ULTIMATE STYLE.CSS === */
-
-/* Fonts & Root Variables */
 :root {
-  --dark-green: #0A361E;
-  --gold: #D4AF37;
-  --white: #ffffff;
-  --black: #121212;
-  --grey: #f4f4f4;
+    --dark-green: #0A361E;
+    --gold: #D4AF37;
+    --white: #ffffff;
+    --black: #121212;
+    --grey: #f4f4f4;
 }
 
 body {
-  margin: 0;
-  font-family: 'Times New Roman', Times, serif;
-  background-color: var(--white);
-  color: var(--black);
-  scroll-behavior: smooth;
+    margin: 0;
+    font-family: 'Times New Roman', Times, serif;
+    background-color: var(--white);
+    color: var(--black);
+    scroll-behavior: smooth;
+    overflow-x: hidden;
 }
 
-/* ===================================================
-   ✅ GLOBAL RESETS
-=================================================== */
 *,
 *::before,
 *::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
-/* ===================================================
-   ✅ NAVBAR: Sleek & Fancy
-=================================================== */
 .navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1.2rem 2rem;
-  background-color: #0A361E;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
-  position: sticky;
-  top: 0;
-  z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.2rem 2rem;
+    background-color: #0A361E;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
 .navbar .logo {
-  font-size: 2rem;
-  font-weight: bold;
-  color: var(--gold);
-  letter-spacing: 1px;
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--gold);
+    letter-spacing: 1px;
 }
 
 .nav-links a {
-  margin: 0 1rem;
-  font-size: 1.2rem;
-  font-weight: bold;
-  color: var(--white);
-  text-decoration: none;
-  position: relative;
-  transition: all 0.3s ease-in-out;
+    margin: 0 1rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--white);
+    text-decoration: none;
+    position: relative;
+    transition: all 0.3s ease-in-out;
 }
 
 .nav-links a::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: -5px;
-  height: 2px;
-  width: 0%;
-  background: var(--gold);
-  transition: width 0.3s ease;
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    height: 2px;
+    width: 0%;
+    background: var(--gold);
+    transition: width 0.3s ease;
 }
 
 .nav-links a:hover,
 .nav-links a.active {
-  color: var(--gold);
+    color: var(--gold);
 }
 
 .nav-links a:hover::after,
 .nav-links a.active::after {
-  width: 100%;
+    width: 100%;
 }
 
-/* Burger Menu */
 .burger-menu {
-  display: none;
-  font-size: 2rem;
-  background: none;
-  border: none;
-  color: var(--gold);
-  cursor: pointer;
+    display: none;
+    font-size: 2rem;
+    background: none;
+    border: none;
+    color: var(--gold);
+    cursor: pointer;
+    z-index: 1001;
 }
 
-/* Mobile Nav Slide Panel */
 .mobile-nav {
-  position: fixed;
-  top: 0;
-  right: 0;
-  width: 80%;
-  max-width: 350px;
-  height: 100%;
-  background-color: var(--dark-green);
-  transform: translateX(100%);
-  transition: transform 0.4s ease;
-  display: flex;
-  flex-direction: column;
-  padding: 2rem;
-  padding-top: 5rem;
-  gap: 2rem;
-  z-index: 1000;
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 80%;
+    max-width: 350px;
+    height: 100%;
+    background-color: var(--dark-green);
+    transform: translateX(100%);
+    transition: transform 0.4s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    padding-top: 5rem;
+    gap: 2rem;
+    z-index: 999;
+    box-shadow: -5px 0 15px rgba(0,0,0,0.3);
 }
 
 .mobile-nav a {
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: var(--white);
-  text-decoration: none;
-  opacity: 0;
-  transform: translateX(20px);
-  transition: opacity 0.4s ease, transform 0.4s ease;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--white);
+    text-decoration: none;
+    opacity: 0;
+    transform: translateX(20px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    padding: 0.5rem 0;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 998;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s ease, visibility 0.4s ease;
 }
 
 body.mobile-nav-active .mobile-nav {
-  transform: translateX(0);
+    transform: translateX(0);
 }
 
 body.mobile-nav-active .mobile-nav a {
-  opacity: 1;
-  transform: translateX(0);
+    opacity: 1;
+    transform: translateX(0);
+}
+
+body.mobile-nav-active .overlay {
+    opacity: 1;
+    visibility: visible;
 }
 
 .close-btn {
-  position: absolute;
-  top: 1.5rem;
-  right: 2rem;
-  font-size: 2rem;
-  background: none;
-  border: none;
-  color: var(--white);
-  cursor: pointer;
+    position: absolute;
+    top: 1.5rem;
+    right: 2rem;
+    font-size: 2rem;
+    background: none;
+    border: none;
+    color: var(--white);
+    cursor: pointer;
+    z-index: 1001;
 }
 
 @media (max-width: 768px) {
-  .nav-links {
-    display: none;
-  }
-  .burger-menu {
-    display: block;
-  }
+    .nav-links {
+        display: none;
+    }
+    .burger-menu {
+        display: block;
+    }
 }
 
-/* ===================================================
-   ✅ HOME HEADER
-=================================================== */
 header {
-  text-align: center;
-  padding: 6rem 2rem;
-  background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
-              url('https://images.unsplash.com/photo-1552566626-52f8b828add9?ixlib=rb-4.0.3&q=80&w=2070') no-repeat center center / cover;
-  color: var(--white);
-  animation: fadeIn 1.5s ease-in-out;
+    text-align: center;
+    padding: 6rem 2rem;
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+                url('https://images.unsplash.com/photo-1552566626-52f8b828add9?ixlib=rb-4.0.3&q=80&w=2070') no-repeat center center / cover;
+    color: var(--white);
+    animation: fadeIn 1.5s ease-in-out;
 }
 
 header h1 {
-  font-size: 3rem;
-  margin-bottom: 1rem;
-  letter-spacing: 1px;
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    letter-spacing: 1px;
 }
 
 header p {
-  font-size: 1.25rem;
-  margin-bottom: 2rem;
+    font-size: 1.25rem;
+    margin-bottom: 2rem;
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(-20px); }
-  to { opacity: 1; transform: translateY(0); }
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
-/* ===================================================
-   ✅ SEXY MENU SECTION
-=================================================== */
 .menu-filters {
-  text-align: center;
-  margin: 2rem 0;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 0.75rem;
+    text-align: center;
+    margin: 2rem 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.75rem;
+    padding: 0 1rem;
 }
 
 .menu-filters button {
-  padding: 10px 24px;
-  font-size: 1rem;
-  font-weight: bold;
-  font-family: 'Times New Roman', Times, serif;
-  border: 2px solid var(--gold);
-  background-color: transparent;
-  color: var(--dark-green);
-  border-radius: 25px;
-  cursor: pointer;
-  transition: all 0.3s ease-in-out;
+    padding: 10px 24px;
+    font-size: 1rem;
+    font-weight: bold;
+    font-family: 'Times New Roman', Times, serif;
+    border: 2px solid var(--gold);
+    background-color: transparent;
+    color: var(--dark-green);
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
 }
 
 .menu-filters button:hover,
 .menu-filters button.active-filter {
-  background-color: var(--gold);
-  color: var(--white);
+    background-color: var(--gold);
+    color: var(--white);
 }
 
 .menu-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2rem;
-  padding: 0 2rem 4rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    padding: 0 2rem 4rem;
 }
 
-/* SEXY MENU CARDS 😎 */
 .menu-card {
-  background: var(--white);
-  border-radius: 15px;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
-  overflow: hidden;
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
-  cursor: pointer;
+    background: var(--white);
+    border-radius: 15px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    cursor: pointer;
 }
 
 .menu-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+    transform: translateY(-8px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
 }
 
 .card-img {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
 }
 
 .card-content {
-  padding: 1.25rem;
+    padding: 1.25rem;
 }
 
 .menu-card h3 {
-  color: var(--dark-green);
-  font-size: 1.5rem;
-  margin-bottom: 0.5rem;
+    color: var(--dark-green);
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
 }
 
 .menu-card .price {
-  color: var(--gold);
-  font-weight: bold;
-  font-size: 1.1rem;
-  margin-bottom: 1rem;
+    color: var(--gold);
+    font-weight: bold;
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
 }
 
 .menu-card .description {
-  color: #555;
-  font-size: 0.95rem;
-  line-height: 1.5;
+    color: #555;
+    font-size: 0.95rem;
+    line-height: 1.5;
 }
 
-/* ===================================================
-   ✅ CONTACT FORM
-=================================================== */
 .contact-form {
-  max-width: 600px;
-  margin: 3rem auto;
-  padding: 2rem;
-  background: var(--grey);
-  border-radius: 12px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    max-width: 600px;
+    margin: 3rem auto;
+    padding: 2rem;
+    background: var(--grey);
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
 }
 
 .contact-form h2 {
-  text-align: center;
-  margin-bottom: 2rem;
-  font-size: 2rem;
-  color: var(--dark-green);
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 2rem;
+    color: var(--dark-green);
 }
 
 .form-group {
-  margin-bottom: 1.5rem;
+    margin-bottom: 1.5rem;
 }
 
 .form-group label {
-  font-weight: bold;
-  display: block;
-  margin-bottom: 0.5rem;
+    font-weight: bold;
+    display: block;
+    margin-bottom: 0.5rem;
 }
 
 .form-group input,
 .form-group textarea {
-  width: 100%;
-  padding: 0.75rem;
-  border-radius: 8px;
-  border: 1px solid #ccc;
-  font-size: 1rem;
-  font-family: 'Times New Roman', Times, serif;
+    width: 100%;
+    padding: 0.75rem;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+    font-family: 'Times New Roman', Times, serif;
 }
 
-/* ===================================================
-   ✅ BUTTONS
-=================================================== */
 .btn {
-  background: linear-gradient(135deg, #0A361E, #14592e);
-  color: white;
-  padding: 0.75rem 2rem;
-  border: none;
-  border-radius: 30px;
-  font-size: 1rem;
-  font-weight: bold;
-  text-decoration: none;
-  display: inline-block;
-  transition: all 0.3s ease-in-out;
+    background: linear-gradient(135deg, #0A361E, #14592e);
+    color: white;
+    padding: 0.75rem 2rem;
+    border: none;
+    border-radius: 30px;
+    font-size: 1rem;
+    font-weight: bold;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.3s ease-in-out;
 }
 
 .btn:hover {
-  transform: scale(1.05);
-  background: linear-gradient(135deg, #1f803a, #197a3a);
+    transform: scale(1.05);
+    background: linear-gradient(135deg, #1f803a, #197a3a);
 }
 
-/* ===================================================
-   ✅ RESPONSIVE EXTRAS
-=================================================== */
 @media (max-width: 600px) {
-  .navbar .logo {
-    font-size: 1.5rem;
-  }
-  header h1 {
-    font-size: 2.2rem;
-  }
-  header p {
-    font-size: 1rem;
-  }
-  .menu-grid {
-    padding: 0 1rem 3rem;
-  }
-  .contact-form {
-    margin: 1.5rem 1rem;
-  }
+    .navbar .logo {
+        font-size: 1.5rem;
+    }
+    header {
+        padding: 4rem 1rem;
+    }
+    header h1 {
+        font-size: 2.2rem;
+    }
+    header p {
+        font-size: 1rem;
+    }
+    .menu-grid {
+        padding: 0 1rem 3rem;
+        grid-template-columns: 1fr;
+    }
+    .contact-form {
+        margin: 1.5rem 1rem;
+        padding: 1.5rem;
+    }
+    .menu-filters button {
+        padding: 8px 18px;
+        font-size: 0.9rem;
+    }
 }
-
-
 
 .site-footer {
-    /* 
-     * THE FIX: Using the exact bright green from your image. 
-     */
-    background-color: #28590d;
-    
+    background-color: #ffffff;
     padding: 1.5rem 1rem;
     margin-top: 5rem;
-
-    /* These three lines perfectly center the content block */
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+
+.site-footer img {
+    width: 100px;
+    height: auto;
+}
+
+.site-footer p {
+    font-size: 28px;
+    line-height: 1.5;
 }
 
 .footer-credit {
-    /* This groups your text and logo together */
     display: inline-flex;
-    align-items: center; /* Vertically aligns text and logo */
-    gap: 0.75rem; /* The space between the text and the logo */
-    text-decoration: none; /* Removes the underline from the link */
+    align-items: center;
+    gap: 0.75rem;
+    text-decoration: none;
     transition: transform 0.3s ease;
 }
 
 .footer-credit:hover {
-    /* A nice, subtle grow effect on hover */
     transform: scale(1.03);
 }
 
 .powered-by-text {
-    /* 
-     * THE FIX: Setting the font exactly as requested. 
-     */
     font-family: 'Times New Roman', Times, serif;
     font-weight: bold;
-    font-size: 1.6rem; /* Adjust size if needed */
-    color: #000000; /* Black text */
-    margin: 0; /* Important: removes default spacing */
+    font-size: 1.6rem;
+    color: #ADB3B3;
+    margin: 0;
 }
 
 .agency-logo {
-    height: 45px; /* Adjust size to match your preference */
+    height: 45px;
     display: block;
+}
 
-    /* 
-     * IMPORTANT: We have REMOVED the 'filter' property. 
-     * Your logo is already black, so we don't need to change its color.
-     */
+.mobile-nav-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 990;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s ease, visibility 0.4s ease;
+}
+
+body.mobile-nav-active .mobile-nav-overlay {
+    opacity: 1;
+    visibility: visible;
 }

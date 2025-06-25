@@ -1,3 +1,6 @@
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,38 +10,30 @@
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-<!-- ==============================================
-    ✅✅✅ Perfect Responsive Navbar ✅✅✅
-    ============================================== -->
-<nav class="navbar">
-    <div class="logo">The Golden Fork</div>
+    <nav class="navbar">
+        <div class="logo">The Golden Fork</div>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="menu.html">Menu</a>
+            <a href="contact.html">Contact</a>
+        </div>
+        <button class="burger-menu" id="burger-menu" aria-label="Open menu">
+            <i class="fa-solid fa-bars" aria-hidden="true"></i>
+        </button>
+    </nav>
 
-    <!-- Desktop Links (Hides on mobile) -->
-    <div class="nav-links">
+    <div class="mobile-nav" id="mobile-nav">
+        <button class="close-btn" id="close-btn" aria-label="Close menu">
+             <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+        </button>
         <a href="index.html">Home</a>
         <a href="menu.html">Menu</a>
         <a href="contact.html">Contact</a>
     </div>
-
-    <!-- Burger Menu (Shows on mobile) -->
-    <button class="burger-menu" id="burger-menu" aria-label="Open menu">
-        <i class="fa-solid fa-bars" aria-hidden="true"></i>
-    </button>
-</nav>
-
-<!-- The Mobile Navigation Panel (Slides in) -->
-<div class="mobile-nav" id="mobile-nav">
-    <button class="close-btn" id="close-btn" aria-label="Close menu">
-         <i class="fa-solid fa-xmark" aria-hidden="true"></i>
-    </button>
-    <a href="index.html">Home</a>
-    <a href="menu.html">Menu</a>
-    <a href="contact.html">Contact</a>
-</div>
 
     <h1 style="text-align:center; margin-top: 2rem; color: #0A361E;">Our Menu</h1>
     <div class="menu-filters">
@@ -48,21 +43,16 @@
         <button data-category="Desserts">Desserts</button>
         <button data-category="Beverages">Beverages</button>
     </div>
-
-    <main class="menu-grid" id="menu-grid">
-        <!-- Menu cards will be generated here by JavaScript -->
-    </main>
-
-
+    <main class="menu-grid" id="menu-grid"></main>
+    
     <footer class="site-footer">
-    <a href="YOUR_AGENCY_WEBSITE_URL" class="footer-credit" target="_blank" rel="noopener noreferrer" title="Powered by OSG Agency">
-        <p class="powered-by-text">Powered By</p>
-        <img src="image-removebg-preview (1).png" alt="OSG Agency Logo" class="agency-logo">
-    </a>
-</footer>
+        <a href="YOUR_AGENCY_WEBSITE_URL" class="footer-credit" target="_blank" rel="noopener noreferrer" title="Powered by OSG Agency">
+            <p class="powered-by-text">Powered By  </p>
+            <img src="Screenshot_2025-06-25_154507-removebg-preview.png" alt="OSG Agency Logo" class="agency-logo">
+        </a>
+    </footer>
 
-
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script> 
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="script.js"></script>
 </body>
 </html>

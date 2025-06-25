@@ -1,28 +1,19 @@
-// ✅✅✅ The Corrected script.js ✅✅✅
+
 
 document.addEventListener('DOMContentLoaded', () => {
-
-    // --- API & SUPABASE SETUP ---
-
+    
     const SUPABASE_URL = 'https://pcqwsjrratkkunoqstzo.supabase.co';
     const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBjcXdzanJyYXRra3Vub3FzdHpvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTA3ODI1MjEsImV4cCI6MjA2NjM1ODUyMX0.NlxFEsmFJ5M2z32pBA8KgLoZ7EegNfo8KZmoJ7B69CE';
-    
-    // ============================================================================
-    // THE FIX IS HERE: We create a variable named 'supabaseClient' to avoid conflict.
-    // The library itself is 'supabase'. Our specific connection is 'supabaseClient'.
     const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-    // ============================================================================
-    
-    // --- MENU PAGE LOGIC ---
+
     const menuGrid = document.getElementById('menu-grid');
     if (menuGrid) {
-        
         let allMeals = [];
         const fallbackImage = 'https://via.placeholder.com/320x200.png/f4f4f4/cccccc?text=Image+Not+Found';
 
         const displayMenuItems = (items) => {
             menuGrid.innerHTML = '';
-            
+
             if (items.length === 0) {
                 menuGrid.innerHTML = '<p>No meals found. Check your Supabase table for data.</p>';
                 return;
@@ -53,14 +44,13 @@ document.addEventListener('DOMContentLoaded', () => {
             menuGrid.innerHTML = '<p>Loading menu...</p>';
 
             try {
-                // THE FIX IS ALSO HERE: We use our new 'supabaseClient' variable to make the call.
                 const { data, error } = await supabaseClient
                     .from('meals')
                     .select('*')
                     .order('id', { ascending: true });
 
-                if (error) { throw error; }
-                
+                if (error) throw error;
+
                 allMeals = data;
                 displayMenuItems(allMeals);
 
@@ -77,7 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 btn.classList.add('active-filter');
 
                 const category = btn.getAttribute('data-category');
-                
+
                 if (category === 'All') {
                     displayMenuItems(allMeals);
                 } else {
@@ -89,21 +79,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
         loadMeals();
     }
-});
 
-
-
-document.addEventListener('DOMContentLoaded', () => {
-
-    // (All your previous Supabase code can stay here)
-
-    // =========================================
-    // ✅✅✅ Mobile Navigation Logic ✅✅✅
-    // =========================================
     const burgerMenuButton = document.getElementById('burger-menu');
     const mobileNav = document.getElementById('mobile-nav');
     const closeNavButton = document.getElementById('close-btn');
-    const mobileNavLinks = mobileNav.querySelectorAll('a');
+    const mobileNavLinks = mobileNav ? mobileNav.querySelectorAll('a') : []; 
 
     const openNav = () => {
         document.body.classList.add('mobile-nav-active');
@@ -113,10 +93,12 @@ document.addEventListener('DOMContentLoaded', () => {
         document.body.classList.remove('mobile-nav-active');
     };
 
-    burgerMenuButton.addEventListener('click', openNav);
-    closeNavButton.addEventListener('click', closeNav);
-
-    // Close the menu when any of the navigation links are clicked
+    if (burgerMenuButton) {
+        burgerMenuButton.addEventListener('click', openNav);
+    }
+    if (closeNavButton) {
+        closeNavButton.addEventListener('click', closeNav);
+    }
     mobileNavLinks.forEach(link => {
         link.addEventListener('click', closeNav);
     });
